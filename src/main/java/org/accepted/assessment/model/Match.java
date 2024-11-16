@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.accepted.assessment.dto.MatchDto;
 import org.accepted.assessment.model.enums.Sport;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -18,7 +20,8 @@ import java.util.List;
 public class Match {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "match_seq")
+    @SequenceGenerator(name="match_seq",sequenceName="match_seq", allocationSize=1)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "description", nullable = false)
@@ -36,6 +39,7 @@ public class Match {
     private Sport sport;
     @OneToMany(
             fetch = FetchType.LAZY,
+            cascade = CascadeType.REMOVE,
             mappedBy = "match")
     private List<MatchOdds> odds;
 
@@ -50,5 +54,20 @@ public class Match {
                 ", teamB='" + teamB + '\'' +
                 ", sport=" + sport +
                 '}';
+    }
+
+    public MatchDto toMatchDto(boolean getOdds) {
+         return new MatchDto(
+                this.id,
+                this.description,
+                this.matchDate,
+                this.matchTime,
+                this.teamA,
+                this.teamB,
+                this.sport,
+                 (getOdds && this.odds !=null)
+                         ? this.odds.stream().map(o -> o.toMatchOddsDto(false)).toList()
+                         : new ArrayList<>()
+        );
     }
 }

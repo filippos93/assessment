@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  database:
+    container_name: db
+    image: 'postgres:15.2'
+    ports:
+      - '15432:5432'
+    environment:
+      - 'POSTGRES_USER=testUser'
+      - 'POSTGRES_DB=testdb'
+      - 'POSTGRES_PASSWORD=testUser'
+    networks:
+      - internal
+
+  app:
+    depends_on:
+      - database
+    image: assessment_app:1.0
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:postgresql://db:5432/testdb",
+        "spring.datasource.username" : "testUser",
+        "spring.datasource.password" : "testUser"
+      }'
+    ports:
+      - "8080:8080"
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
+

@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "708b448a-70d7-468c-b716-0b867f0b08af",
+		"name": "accepted",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/matches",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/match/all?odds=false",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"match",
+						"all"
+					],
+					"query": [
+						{
+							"key": "odds",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/match/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n}"
+				},
+				"url": {
+					"raw": "localhost:8080/match/2?odds=true",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"match",
+						"2"
+					],
+					"query": [
+						{
+							"key": "odds",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/match",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\" : \"AEK-PAO\",\n    \"match_datetime\" : \"1-12-2025 18:45\",\n    \"team_a\" : \"AEK\",\n    \"team_b\" : \"PAO\",\n    \"sport\" : \"BASKETBALL\",\n    \"odds\" : [\n        {\n            \"odd\" : 2.5,\n            \"specifier\" : \"AEK WIN\"\n        },\n        {\n            \"odd\" : 3.5,\n            \"specifier\" : \"PAO WIN\"\n        },\n        {\n            \"odd\" : 4.5,\n            \"specifier\" : \"DRAW\"\n        }\n    ]\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/match",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"match"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/match/{id}",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/match/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"match",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/match/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/match/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"match",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/match/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/match/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"match",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/match/odd/{oddid}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/match/odd/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"match",
+						"odd",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/match/{matchId}/odds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/match/2/odds",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"match",
+						"2",
+						"odds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/match/odd/{oddId}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"specifier\" : \"HALF TIME PAO WIN\",\n    \"odd\" : 5.6\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/match/odd/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"match",
+						"odd",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/match/{matchId}/odd",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"specifier\" : \"HALF TIME OSFP WIN\",\n    \"odd\" : 6.9\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/match/1/odd",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"match",
+						"1",
+						"odd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/match/odd/{oddId}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/match/odd/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"match",
+						"odd",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
