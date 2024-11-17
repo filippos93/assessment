@@ -1,7 +1,7 @@
 # Assesment (Matches & Match Odds)
 ### Project Requirements
 
-- JDK 17 (not required )
+- JDK 17 
 - Maven 3.8.8
 - Docker, Docker Compose (optional)
 
